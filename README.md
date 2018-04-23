@@ -5,3 +5,4 @@ A property listing web application with the following features
 -	A Search feature that filters the list of properties by location, or number of rooms, or bathrooms etc.
 -	Adding of properties by a user
 
+Built using the **Django Framework**. Version 1.11.8. See the requirements.txt file for Python libraries to install.
