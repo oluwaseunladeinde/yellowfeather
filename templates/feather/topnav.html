@@ -1,0 +1,43 @@
+{% load static i18n %}
+<header class="site-header">
+  <div class="col-5of6 col-offset-1of12">
+    <div class="row">
+      <div class="col-3of4">
+        <ul class="site-nav">
+            <li class="site-nav__item">
+                <a href="/feather/" class="">
+                    <!-- img class="site-logo" src="https://leasingkc.com/wp-content/themes/leasingkc-new/assets/img/logo-blue.png" alt="Leasing KC" /-->
+                    <h4><span class="bonoyellow">yellow</span><span class="bonoblack">Feather</span></h4>
+                </a>
+            </li>
+            <li class="site-nav__item"><a href="#">SALE</a></li>
+            <li class="site-nav__item"><a href="#">RENT</a></li>
+            <!-- li class="site-nav__item"><a href="#" id="lsbtn">SEARCH</a></li -->
+            <li class="site-nav__item site-nav__item--featured"><a href="{% url 'feather:create_listings' %}">List with us!</a></li>
+        </ul>
+      </div>
+      <div class="col-1of4 text-right">
+        <ul class="site-nav">
+            {% if user.is_authenticated %}
+            <li class="site-nav__item">
+                Welcome, {{ user.first_name }}
+            </li>
+            <!-- li class="site-nav__item">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/138442/01c84f5cba77757bd10a5e6f75dbfd5b.jpeg" alt="" class="rounded user-image" />
+            </li -->
+            <li class="site-nav__item">
+                <a href="{% url 'feather:account_logout' %}"> Logout</a>
+            </li>
+            {% else %}
+                <li class="site-nav__item">
+                    <a href="{% url 'feather:account_login' %}">Login</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="{% url 'feather:account_sign_up' %}">Register</a>
+                </li>
+            {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

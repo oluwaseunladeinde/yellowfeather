@@ -1,0 +1,55 @@
+{% load static i18n %}
+<div class="row" id="search_bar" style="z-index: 888;">
+  <div class="col-5of6 col-offset-1of12">
+    <div class="search-bar">
+      <div class="row" id="location_search">
+        <div class="col-full search-bar__item p-x-2">
+              <span class="search-label">Location</span>
+              <input type="text" id="pac-input" class="input-inline" placeholder="Select your location..." />
+        </div>
+      </div>
+      <div class="row" id="feature_search">
+        <div class="col-3of10 search-bar__item p-x-2">
+          <span class="search-label">Price: $0 to $2500+</span>
+          <div class="range-slider">
+          <span class="handle handle--left"></span>
+          <span class="handle handle--right"></span>
+          </div>
+        </div>
+        <div class="col-3of10 search-bar__item p-x-2">
+          <span class="search-label">Bedrooms</span>
+          <div class="button-group">
+            <input type="radio" class="hidden" name="bedroom" id="bedrooms_0" />
+            <label for="bedrooms_0" class="button">Studio</label>
+            <input type="radio" class="hidden" name="bedroom" id="bedrooms_1" />
+            <label for="bedrooms_1" class="button">1</label>
+            <input type="radio" class="hidden" name="bedroom" id="bedrooms_2" />
+            <label for="bedrooms_2" class="button">2</label>
+            <input type="radio" class="hidden" name="bedroom" id="bedrooms_3" />
+            <label for="bedrooms_3" class="button">3</label>
+            <input type="radio" class="hidden" name="bedroom" id="bedrooms_4" />
+            <label for="bedrooms_4" class="button">4+</label>
+          </div>
+        </div>
+        <div class="col-1of5 search-bar__item p-x-2">
+          <span class="search-label">Pets</span>
+          <div class="button-group">
+            <input type="radio" name="pets" class="hidden" id="pet_dogs" />
+            <label for="pet_dogs" class="button">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/138442/sitting-dog.svg" alt="" />
+            </label>
+            <input type="radio" name="pets" class="hidden" id="pet_cats" />
+            <label for="pet_cats" class="button">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/138442/halloween-black-cat.svg" alt="" />
+            </label>
+          </div>
+          <span class="search-advanced-link">Advanced Pet Search</span>
+        </div>
+        <div class="col-1of5 search-bar__item p-x-2">
+          <span class="search-label">Filters</span>
+          <button class="button btn--clear">Add Filter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

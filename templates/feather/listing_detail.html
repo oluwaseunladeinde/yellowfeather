@@ -1,0 +1,185 @@
+{%  extends 'feather/base.html' %}
+{% load static i18n extra_functions %}
+{% load thumbnail %}
+{% block title %}Home{% endblock %}
+
+{% block header %}
+    {% include 'feather/topnav.html' %}
+{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" type="text/css" href="{%  static 'feather/css/detail.css' %}" />
+{% endblock %}
+
+{% block contents %}
+<div class="m-t-2">
+    <div class="col-4of5 col-offset-1of10">
+        <div class="row m-b-1">
+            <div class="col-1of2">
+                <h1>{{ listing.title }}</h1>
+                <i class="fa fa-map-marker"></i> {{ listing.get_address }}
+            </div>
+            <div class="col-1of2 text-right">
+                <span class="text-muted">Advertise here</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-4of5 col-offset-1of10">
+        <div class="row m-b-1">
+            <div class="col-7of10">
+
+                <div class="card noborder">
+                    <article class="card-body-lg">
+                        <p class="price-detail-wrap">
+                            <span class="price h3 text-warning">
+                                <span class="currency"></span><span class="num">{{ listing.price|currency }}</span>
+                            </span>
+                        </p>
+                    </article>
+                    <article class="gallery-wrap">
+                        <div class="img-big-wrap">
+                          <div>
+                              <a href="#">
+                                  {% thumbnail listing.main_image.image "922x570" crop="center" as image %}
+                                        <img src="{{ image.url }}" alt="{{ listing.title }}">
+                                  {% endthumbnail %}
+                              </a>
+                          </div>
+                        </div> <!-- slider-product.// -->
+                        <div class="img-small-wrap">
+                            {% for listimage in listing.images.all %}
+                                <div class="item-gallery">
+                                {% thumbnail listimage.image "100x70" crop="center" as thumb %}
+                                     <img src="{{ thumb.url }}" alt="{{ thumb.title }}"/>
+                                {% endthumbnail %}
+                                </div>
+                            {% endfor %}
+                          <!-- div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div -->
+                        </div> <!-- slider-nav.// -->
+                    </article>
+                    <article class="card-body-lg">
+                        <dl class="item-property">
+                          <dd><p>{{ listing.description }}</p></dd>
+                        </dl><!-- item-property-hor .// -->
+                        <dl class="param param-feature">
+                          <dt>Features</dt>
+                          <dd>
+                              <ul>
+                                    {% for feature in listing.get_features %}
+                                        <li>{{ feature }}</li>
+                                    {% endfor %}
+                              </ul>
+                          </dd>
+                        </dl>
+                        <hr>
+
+                        {% if listing.nearby %}
+                        <h4>{% trans "More properties on this area" %}</h4>
+                        <div class="row">
+                            {% for en_area in listing.nearby %}
+                                <div class="col-sm-6">
+                                    <figure class="card card-product">
+                                        <div class="img-wrap">
+                                            {% thumbnail en_area.main_image.image "855x570" crop="center" as image %}
+                                                <img src="{{ image.url }}" alt="{{ en_area.title }}">
+                                                <!-- a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a -->
+                                            {% endthumbnail %}
+                                        </div>
+                                        <figcaption class="info-wrap">
+                                            <h6 class="title text-dots"><a href="{{ en_area.absolute_url }}">{{ en_area.title }}</a></h6>
+                                            <div class="action-wrap">
+                                                <!-- a href="#" class="btn btn-primary btn-sm float-right"> Order </a -->
+                                                <div class="price-wrap h5">
+                                                    <span class="price-new">{{ en_area.price|currency }}</span>
+                                                </div>
+                                                <div class="location-wrap">
+                                                    <span class="location text-muted"><i class="fa fa-map-marker"></i> {{ en_area.get_address }}</span>
+                                                </div>
+                                            </div> <!-- action-wrap -->
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    </article>
+                </div>
+            </div>
+            <div class="col-3of10">
+                <div id="yellowsearch">
+                    <h5>{% trans "Agent Contact Info" %}</h5>
+                    <figure class="card card-product">
+                        <div class="img-wrap">
+                            <a href="#">
+                                {% thumbnail listing.agent.image "108x108" crop="center" as agent_img %}
+                                    <img src="{{ agent_img.url }}" alt="{{ listing.agent }}"/>
+                                {% endthumbnail %}
+                            </a>
+                        </div>
+                        <figcaption class="info-wrap">
+                            <h6 class="title text-dots"><a href="#">{{ en_area.title }}</a></h6>
+                            <p>{{ listing.agent }}</p>
+                            <div class="action-wrap">
+                                <!-- a href="#" class="btn btn-primary btn-sm float-right"> Order </a -->
+                                {% if listing.agent.user.email %}
+                                <div class="price-wrap">
+                                    <span class="price-new"><i class="fa fa-envelope-o"></i> {{ listing.agent.user.email }}</span>
+                                </div>
+                                {% endif %}
+                                {% if listing.agent.phone %}
+                                <div class="location-wrap">
+                                    <span class="location text-muted"><i class="fa fa-phone-square"></i> {{ listing.agent.phone }}</span>
+                                </div>
+                                {% endif %}
+                                {% if listing.agent.cellphone %}
+                                <div class="location-wrap">
+                                    <span class="location text-muted">{{ listing.agent.cellphone }}</span>
+                                </div>
+                                {% endif %}
+                            </div> <!-- action-wrap -->
+                        </figcaption>
+                    </figure>
+                    {% get_search %}
+                    <div class="xrow">
+                        <br />
+                        <h5>{% trans "Follow Us" %}</h5>
+                        <div class="sicon">
+
+                            <div class="iconx text-center">
+                                <div class="icon-circle">
+                                    <a href="#" class="ifacebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="iconx text-center">
+                                <div class="icon-circle">
+                                    <a href="#" class="itwittter" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="iconx text-center">
+                                <div class="icon-circle">
+                                    <a href="#" class="igoogle" title="Google+"><i class="fa fa-google-plus"></i></a>
+                                </div>
+                            </div>
+                            <div class="iconx text-center">
+                                <div class="icon-circle">
+                                    <a href="#" class="iLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{%  endblock %}
+
+{% block extrajs %}
+<script src="{% static 'feather/js/script.js' %}"></script>
+{% endblock %}

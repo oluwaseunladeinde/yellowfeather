@@ -1,0 +1,38 @@
+{% load extra_functions %}
+<div class="card-list">
+    {% for property in properties %}
+    <div class="card noborder">
+        <div class="row" style="margin-left: 0;">
+            <div class="col-3of8 p-t-1 card__image" style="background-image: url('{{ property.main_image.image.url }}');">
+                <img src="{{ property.main_image.image.url }}" alt="" />
+                <span class="card__banner">{{ property.get_type_display }}</span>
+            </div>
+            <div class="col-5of8 p-x-2">
+                <span class="card__title"><a href="{{ property.absolute_url }}">{{ property.title }}</a><!-- small class="text-muted">KC420</small --></span>
+                <span class="card__price">{{ property.price|currency }} <i class="card__featured fa fa-certificate"></i></span>
+                <div class="card__meta" style="margin-bottom: .35rem;">
+                    <!-- span class="meta__item">Studio - 2 Bed</span>
+                    <span class="meta__item">1 - 2 Bath</span -->
+                    <span class="meta__item">{{ property.get_address }}</span>
+                    <span class="meta__item text-muted">{{ property.created_at|timesince }} ago</span>
+                </div>
+                <p class="card__text">{{ property.description }}</p>
+        <!-- div class="card__actions">
+          <button class="button">Check Availability</button>
+        </div -->
+            </div>
+        </div>
+    </div>
+  {% endfor %}
+</div>
+<hr />
+<div class="pagination">
+  <a href="#">« Prev</a>
+  <a href="#">1</a>
+  <a href="#" class="active">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">Next »</a>
+</div>
+<p>Total Pages ({{ propcount }}). You are viewing Page No.: 3</p>

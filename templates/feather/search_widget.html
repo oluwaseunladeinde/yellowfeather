@@ -1,0 +1,75 @@
+{% load static i18n %}
+<h5>{% trans "Filter Options" %}</h5>
+    <form id="listing_searchform" class="search-bar" method="post" action="{% url 'feather:search_listings' %}">
+        {% csrf_token %}
+        <p class="waitbtn" style="display:none;">Please wait...</p>
+        <div class="row" id="location_search" style="margin:0;">
+            <div class="col-full search-bar__item p-x-2">
+                <span class="search-label">Location</span>
+                <!--input type="text" id="pac-input" class="input-inline" placeholder="Select your location..." / -->
+                <select name="location" class="input-inline">
+                    {% for location in locations %}
+                        <option name="location" value="{{ location.name }}">{{ location.name }}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+            <!-- div class="col-full search-bar__item p-x-2">
+                <span class="search-label">Price: $0 to $2500+</span>
+                <div class="range-slider">
+                    <span class="handle handle--left"></span>
+                    <span class="handle handle--right"></span>
+                </div>
+            </div -->
+            <div class="col-full search-bar__item p-x-2">
+                <span class="search-label">Bedrooms</span>
+                <div class="button-group">
+                    <input type="radio" class="hidden" name="bedroom" id="bedrooms_0" value="0"/>
+                    <label for="bedrooms_0" class="button">Studio</label>
+                    <input type="radio" class="hidden" name="bedroom" id="bedrooms_1" value="1"/>
+                    <label for="bedrooms_1" class="button">1</label>
+                    <input type="radio" class="hidden" name="bedroom" id="bedrooms_2" value="2"/>
+                    <label for="bedrooms_2" class="button">2</label>
+                    <input type="radio" class="hidden" name="bedroom" id="bedrooms_3" value="3"/>
+                    <label for="bedrooms_3" class="button">3</label>
+                    <input type="radio" class="hidden" name="bedroom" id="bedrooms_4" value="4" />
+                    <label for="bedrooms_4" class="button">4+</label>
+                </div>
+            </div>
+            <div class="col-full search-bar__item p-x-2">
+                <span class="search-label">Bathrooms</span>
+                <div class="button-group">
+                    <input type="radio" name="bathrooms" class="hidden" id="bathrooms_1" value="1"/>
+                    <label for="bathrooms_1" class="button">1</label>
+                    <input type="radio" name="bathrooms" class="hidden" id="bathrooms_2" value="2" />
+                    <label for="bathrooms_2" class="button">2</label>
+                    <input type="radio" name="bathrooms" class="hidden" id="bathrooms_3" value="3"/>
+                    <label for="bathrooms_3" class="button">3</label>
+                    <input type="radio" name="bathrooms" class="hidden" id="bathrooms_4" value="4"/>
+                    <label for="bathrooms_4" class="button">4+</label>
+
+                </div>
+            </div>
+            <!-- div class="col-full search-bar__item p-x-2">
+                <span class="search-label">Pets</span>
+                <div class="button-group">
+                    <input type="radio" name="pets" class="hidden" id="pet_none" />
+                    <label for="pet_none" class="button">NONE
+                    <img src="{%  static 'icons/sitting-dog.svg' %}" alt="" />
+                    </label>
+                    <input type="radio" name="pets" class="hidden" id="pet_dogs" />
+                    <label for="pet_cats" class="button"> DOGS
+                    <img src="{%  static 'icons/halloween-black-cat.svg' %}" alt="" />
+                    </label>
+                    <input type="radio" name="pets" class="hidden" id="pet_cats" />
+                    <label for="pet_cats" class="button"> CATS
+                    <img src="{%  static 'icons/halloween-black-cat.svg' %}" alt="" />
+                    </label>
+                </div>
+                <!-- span class="search-advanced-link">Advanced Pet Search</span>
+            </div -->
+            <div class="col-full search-bar__item p-x-2">
+                <button class="button submit btn--clear site-nav__item--featured">Filter</button>
+            </div>
+        </div>
+    </form>

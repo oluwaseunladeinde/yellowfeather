@@ -1,0 +1,268 @@
+{%  extends 'feather/base.html' %}
+{% load static i18n extra_functions %}
+{% load thumbnail %}
+{% block title %}Home{% endblock %}
+
+{% block header %}
+    {% include 'feather/topnav.html' %}
+{% endblock %}
+
+{% block extracss %}
+    <link type="text/css" href="http://cdn.materialdesignicons.com/2.1.99/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{%  static 'feather/css/detail.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{%  static 'feather/css/create.css' %}" />
+{% endblock %}
+
+{% block contents %}
+<div class="m-t-2">
+    <div class="col-4of5 col-offset-1of10">
+        <div class="row m-b-1">
+            <div class="col-1of2">
+                <h1>New Listing</h1>
+                Your premium listing is best served here.
+            </div>
+            <div class="col-1of2 text-right">
+                <span class="text-muted">Advertise here</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-4of5 col-offset-1of10">
+        <div class="row m-b-1">
+            <div class="col-7of10">
+                <div id="workinprogress" class="block" style="display: none">
+                    <h4>{% trans "Check back soon. Work in progress..." %}</h4>
+                </div>
+                <div class="card extra noborder">
+                    <form class="form listingform" role="form" method="post" action="">
+                        <h3>Property</h3>
+                        <hr/>
+                        <div class="form-group">
+                            <label>Title <span class="text-danger">*</span></label>
+                            <input type="text" required name="title" class="form-control" placeholder="...">
+                        </div>
+                        <div class="form-group">
+                            <label>Description <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="description" required rows="4" placeholder="..."></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label>Offer Type <span class="text-danger">*</span></label>
+                                <select class="form-control" name="listing_type">
+                                    {% for inx, vl in offertypes %}
+                                        <option value="{{ inx }}">{{ vl }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Bedrooms <span class="text-danger">*</span></label>
+                                <select class="form-control" required>
+                                    {% for inx, vl in bedrooms %}
+                                        <option name="bedrooms" value="{{ inx }}">{{ vl }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Bathrooms <span class="text-danger">*</span></label>
+                                <select class="form-control" required>
+                                    {% for inx, vl in bathrooms %}
+                                        <option name="bathrooms" value="{{ inx }}">{{ vl }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label>State<span class="text-danger">*</span></label>
+                                <select class="form-control" required>
+                                    {% for inx, vl in states %}
+                                        <option name="state" value="{{ inx }}">{{ vl }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Location <span class="text-danger">*</span></label>
+                                <input type="text" name="location" required class="form-control" placeholder="e.g. Osborne, Ikoyi">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Size </label>
+                                <input type="text" class="form-control" placeholder="sq ft">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>Price <span class="text-danger">*</span></label>
+                                <input type="text" name="price" required class="form-control" placeholder="e.g. 40000000">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Latitude </label>
+                                <input type="text" name="latitude" class="form-control" placeholder="...">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Longitude <span class="text-danger">*</span></label>
+                                <input type="text" name="longitude" class="form-control" placeholder="...">
+                            </div>
+                        </div>
+                        <br />
+                        <h3>Attributes</h3>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="osahan-checkbox">
+                                    <label class="custom-control-label" for="osahan-checkbox">Center Cooling</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="osahan-checkbox">
+                                    <label class="custom-control-label" for="osahan-checkbox">Fire Alarm</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="osahan-checkbox">
+                                    <label class="custom-control-label" for="osahan-checkbox">Heating</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="osahan-checkbox">
+                                    <label class="custom-control-label" for="osahan-checkbox">Gym</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="osahan-checkbox">
+                                    <label class="custom-control-label" for="osahan-checkbox">Balcony</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="osahan-checkbox">
+                                    <label class="custom-control-label" for="osahan-checkbox">Modern Kitchen</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="osahan-checkbox">
+                                    <label class="custom-control-label" for="osahan-checkbox">Pool</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="osahan-checkbox">
+                                    <label class="custom-control-label" for="osahan-checkbox">Elevator</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="osahan-checkbox">
+                                    <label class="custom-control-label" for="osahan-checkbox">Fully Furnished</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="osahan-checkbox">
+                                    <label class="custom-control-label" for="osahan-checkbox">Sauna</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="osahan-checkbox">
+                                    <label class="custom-control-label" for="osahan-checkbox">Dish Washer</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="osahan-checkbox">
+                                    <label class="custom-control-label" for="osahan-checkbox">Pet Frindly</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <h3>Pictures</h3>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="fuzone">
+                                    <div class="fu-text">
+                                        <span><i class="mdi mdi-image-area"></i> Click here or drop files to upload</span>
+                                    </div>
+                                    <input class="upload" type="file">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="fuzone">
+                                    <div class="fu-text">
+                                        <span><i class="mdi mdi-image-area"></i> Click here or drop files to upload</span>
+                                    </div>
+                                    <input class="upload" type="file">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="fuzone">
+                                    <div class="fu-text">
+                                        <span><i class="mdi mdi-image-area"></i> Click here or drop files to upload</span>
+                                    </div>
+                                    <input class="upload" type="file">
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-3of10">
+                <div id="yellowsearch">
+                    <h5>{% trans "Latest Property Listed" %}</h5>
+                    <figure class="card card-product">
+                        <div class="img-wrap">
+                            {% thumbnail listing.main_image.image "855x570" crop="center" as image %}
+                                <img src="{{ image.url }}" alt="{{ listing.title }}">
+                                <!-- a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a -->
+                            {% endthumbnail %}
+                        </div>
+                        <figcaption class="info-wrap">
+                            <h6 class="title text-dots"><a href="{{ listing.absolute_url }}">{{ listing.title }}</a></h6>
+                            <div class="action-wrap">
+                                <!-- a href="#" class="btn btn-primary btn-sm float-right"> Order </a -->
+                                <div class="price-wrap h5">
+                                    <span class="price-new">{{ listing.price|currency }}</span>
+                                </div>
+                                <div class="location-wrap">
+                                    <span class="location text-muted"><i class="fa fa-map-marker"></i> {{ listing.get_address }}</span>
+                                </div>
+                            </div> <!-- action-wrap -->
+                        </figcaption>
+                    </figure>
+                    <div class="xrow">
+                        <br />
+                        <h5>{% trans "Follow Us" %}</h5>
+                        <div class="sicon">
+
+                            <div class="iconx text-center">
+                                <div class="icon-circle">
+                                    <a href="#" class="ifacebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="iconx text-center">
+                                <div class="icon-circle">
+                                    <a href="#" class="itwittter" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="iconx text-center">
+                                <div class="icon-circle">
+                                    <a href="#" class="igoogle" title="Google+"><i class="fa fa-google-plus"></i></a>
+                                </div>
+                            </div>
+                            <div class="iconx text-center">
+                                <div class="icon-circle">
+                                    <a href="#" class="iLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{%  endblock %}
+
+{% block extrajs %}
+<script src="{% static 'feather/js/script.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,98 @@
+{%  extends 'feather/base.html' %}
+{% load static i18n extra_functions %}
+{% block title %}Home{% endblock %}
+
+{% block header %}
+    {% include 'feather/topnav.html' %}
+{% endblock %}
+
+{% block contents %}
+<div class="m-t-2">
+    <div class="col-4of5 col-offset-1of10">
+        <div class="row m-b-1">
+            <div class="col-1of2">
+                <h1 class="h5m">Featured Listing</h1>
+                <span class="text-muted sp5m">List of popular and high demand Listings</span>
+            </div>
+            <div class="col-1of2 text-right">
+                <span class="text-muted">Advertise here</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-4of5 col-offset-1of10">
+        <div class="row m-b-1">
+            <div class="col-7of10">
+                <div id="preloader" class="block">
+                    <h4><i class="fa fa-spin fa-spinner"></i> {% trans "Processing..." %}</h4>
+                </div>
+                <div class="card-list"></div>
+            </div>
+            <div class="col-3of10">
+                <div id="yellowsearch">
+                    {% get_search %}
+                    <div class="xrow">
+                        <br />
+                        <h5>{% trans "Follow Us" %}</h5>
+                        <div class="sicon">
+
+                            <div class="iconx text-center">
+                                <div class="icon-circle">
+                                    <a href="#" class="ifacebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="iconx text-center">
+                                <div class="icon-circle">
+                                    <a href="#" class="itwittter" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="iconx text-center">
+                                <div class="icon-circle">
+                                    <a href="#" class="igoogle" title="Google+"><i class="fa fa-google-plus"></i></a>
+                                </div>
+                            </div>
+                            <div class="iconx text-center">
+                                <div class="icon-circle">
+                                    <a href="#" class="iLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr />
+                    <h5>{% trans "Contact Us" %}</h5>
+                    <div class="card noborder">
+                        <div class="card-body hm-gradient">
+                            <!-- Form contact -->
+                            <form class="contact-form" action="" method="post">
+                                {% csrf_token %}
+                                <form class="contact-form" action="" method="post">
+                                    {% if user.is_authenticated %}
+                                        <p>A short message to the Agent. We would make sure they recieve it.</p>
+                                    {% else  %}
+                                        <input type="text" name="name" placeholder="name" required>
+                                        <input type="email" name="email" placeholder="email" required>
+                                    {% endif %}
+                                    <textarea name="message" rows="10" placeholder="message" required></textarea>
+                                    <input class="button" type="submit">
+                                </form>
+                            </form>
+                            <!-- Form contact -->
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{%  endblock %}
+
+{% block extrajs %}
+<script src="{% static 'feather/js/script.js' %}"></script>
+{% endblock %}
