@@ -1,0 +1,1 @@
+Holds the uploaded images for the listings.
