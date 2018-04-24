@@ -1,0 +1,83 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang='en' class=''>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="robots" content="noindex">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="">
+
+        <title>Yellow Feather - {% block title %}{% endblock %}</title>
+        <link rel="stylesheet prefetch" type="text/css" href="{%  static 'feather/css/font-awesome.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{%  static 'feather/css/bootstrap.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{%  static 'feather/css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{%  static 'feather/css/cards.css' %}" />
+        {% block extracss %}{% endblock %}
+    </head>
+    <body>
+        {% block header %}{% endblock %}
+        {% block filter %}{% endblock %}
+        {% block contents  %}{%  endblock %}
+
+        <footer class="footer">
+          <div class="row">
+            <div class="col-4of5 col-offset-1of10">
+              <span class="footer-title">Quick Filters</span>
+              <ul class="list-three-columns">
+                <li><a href="https://leasingkc.com/listings/bonner-springs">Bonner Springs Apartments</a></li>
+                <li><a href="https://leasingkc.com/listings/osawatomie">Osawatomie Apartments</a></li>
+                <li><a href="https://leasingkc.com/listings/overland-park">Overland Park Apartments</a></li>
+                <li><a href="https://leasingkc.com/listings/prairie-village">Prairie Village Apartments</a></li>
+                <li><a href="https://leasingkc.com/listings/roeland-park">Roeland Park Apartments</a></li>
+                <li><a href="https://leasingkc.com/listings/shawnee">Shawnee Apartments</a></li>
+                <li><a href="https://leasingkc.com/listings/spring-hill">Spring Hill Apartments</a></li>
+                <li><a href="https://leasingkc.com/listings/legends-:-kansas-speedway">Legends / Kansas Speedway Apartments</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </footer>
+        <footer class="sub-footer">
+          <p class="text-center">&copy; 2018. All rights reserved | AMOR DIGITAL STUDIOS</p>
+        </footer>
+
+        <div class="filters" id="filters">
+          <div class="row">
+            <div class="col-1of2 p-x-2">
+              <span class="filter-label">Property Type</span>
+
+              <div class="button-group">
+                <input type="checkbox" class="hidden" id="pt_apartment" />
+                <label for="pt_apartment" class="button"><span>Apartment</span></label>
+                <input type="checkbox" class="hidden" id="pt_condo" />
+                  <label for="pt_condo" class="button"><span>Condo</span></label>
+                <input type="checkbox" class="hidden" id="pt_loft" />
+                  <label for="pt_loft" class="button"><span>Loft</span></label>
+                <input type="checkbox" class="hidden" id="pt_house" />
+                  <label for="pt_house" class="button"><span>House</span></label>
+                <input type="checkbox" class="hidden" id="pt_duplex" />
+                  <label for="pt_duplex" class="button"><span>Duplex</span></label>
+                <input type="checkbox" class="hidden" id="pt_55" />
+                  <label for="pt_55" class="button"><span>55+</span></label>
+                <input type="checkbox" class="hidden" id="pt_office" />
+                  <label for="pt_office" class="button"><span>Office</span></label>
+              </div>
+            </div>
+            <div class="col-1of2 p-x-2">
+              <span class="filter-label">Bathrooms</span>
+            </div>
+          </div>
+        </div>
+
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" type="text/javascript"></script>
+        <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+        <script src='https://cdn.rawgit.com/leafo/sticky-kit/v1.1.2/jquery.sticky-kit.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.3/jquery.sticky.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.3/headroom.min.js'></script>
+        <script src="{% static 'feather/js/base.js' %}"></script>
+        {% block extrajs %}{% endblock %}
+    </body>
+</html>
