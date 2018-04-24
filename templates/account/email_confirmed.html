@@ -1,0 +1,20 @@
+{% extends "site_base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block pagetitle %}{% trans "Email confirmed" %}{% endblock %}
+" %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="info"></div>
+</div>
+<div id="authformpane" class="authformpane">
+    <div class="logothumbnail">
+        <img src="{% static 'images/mi_amor.png'%}">
+    </div>
+    <div class="messagepanel"></div>
+    <h1 class="pagetitle">{% trans "Email confirmed" %}</h1>
+    <p class="lead">{% blocktrans with email=confirmation.email_address.email %}You have confirmed <b>{{ email }}</b>{% endblocktrans %}</p>
+</div>
+{% endblock %}

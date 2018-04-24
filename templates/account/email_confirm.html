@@ -1,0 +1,25 @@
+{% extends "site_base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block pagetitle %}{% trans "Confirm Email" %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="info"></div>
+</div>
+<div id="authformpane" class="authformpane">
+    <div class="logothumbnail">
+        <img src="{% static 'images/mi_amor.png'%}">
+    </div>
+    <div class="messagepanel"></div>
+    <form class="authform" method="post" action="{% url 'account_confirm_email' key=confirmation.key %}" autocapitalize="off" 
+    {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+        {% csrf_token %}
+        <p class="lead">{% blocktrans with email=confirmation.email_address.email %}Confirm email address <b>{{ email }}</b>?{% endblocktrans %}</p>
+        <button class="btn btn-block" type="submit">{% trans "Confirm" %}</button>
+    </form>
+</div>
+{% endblock %}
+
+
