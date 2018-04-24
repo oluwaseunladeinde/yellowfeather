@@ -1,0 +1,41 @@
+{% extends "feather/base.html" %}
+{% load static %}
+{% load account_tags %}
+{% load i18n %}
+{% load bootstrap_tags %}
+
+{% block title %}{% trans "Login" %}{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" type="text/css" href="{%  static 'feather/css/auth.css' %}" />
+{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="info">
+    </div>
+</div>
+<div id="authformpane" class="authformpane">
+    <div class="logothumbnail">
+        <!-- img src="{% static 'images/mi_amor.png'%}" -->
+        <h3><a href="/feather/"><span class="bonoyellow">Yellow</span> Feather</a></h3>
+    </div>
+    <div class="messagepanel">
+        {% if next %}
+            {% if user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+    <form class="authform" method="POST" action="{% url 'feather:account_login' %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+        {% csrf_token %}
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        {{ form|as_bootstrap }}
+        <p class="text-muted notifier"><a href="#">Forgot your password?</a></p>
+        <button class="btn btn-block" type="submit">{% trans "Login" %}</button>
+        <p class="message">Not registered? <a href="{% url 'feather:account_sign_up' %}">{% trans "Register" %}</a></p>
+    </form>
+</div>
+{% endblock %}
