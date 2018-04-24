@@ -1,0 +1,107 @@
+#authformpane {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 400px;
+  margin: 0 auto 100px;
+  padding: 30px;
+  border-radius: 3px;
+  text-align: center;
+}
+#authformpane .logothumbnail {
+  width: 200px;
+  height: 70px;
+  margin: 0 auto 20px;
+  padding: 10px 30px;
+  border-radius: 100%;
+  box-sizing: border-box;
+}
+#authformpane .logothumbnail img {
+  display: block;
+  width: 100%;
+}
+#authformpane .messagepanel p {
+  color: #737373;
+  font-size: 1.03em;
+  text-align: left;
+}
+#authformpane .authform {
+  position: relative;
+}
+#authformpane .authform .notifier {
+  text-align: right;
+  font-size: 13px;
+}
+#authformpane .authform .notifier a {
+  color: #b3b3b3;
+}
+#authformpane .authform .error-msg {
+  color: #d91341;
+}
+#authformpane .authform .form-group {
+  background: #f7f7f7;
+  border: 1px solid #f7f7f7;
+  margin: 0 0 15px;
+  padding: 10px;
+  text-align: left;
+}
+#authformpane .authform .form-group label {
+  font-size: 13px;
+}
+#authformpane .authform .form-group:focus,
+#authformpane .authform .form-group:hover {
+  background: #f2f2f2;
+  border: 1px solid #ededed;
+}
+#authformpane .authform .form-group .form-control {
+  border: 1px solid #f2f2f2;
+  background: transparent;
+}
+#authformpane .authform input {
+  background: none;
+  border: 0;
+  outline: none;
+  padding: 0;
+  font-size: 1.14445em;
+  box-shadow: none;
+}
+#authformpane .authform button,
+#authformpane .authform .btn {
+  min-width: 35%;
+}
+#authformpane .authform button {
+  background: #ffc107;
+  color: #fff;
+  border-radius: 1px;
+  font-size: 1.2em;
+  padding: 8px;
+  outline: 0;
+}
+#authformpane .authform button:hover {
+  background: #f5b800;
+}
+#authformpane .authform .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 14px;
+}
+#authformpane .authform .message a:hover {
+  color: #ec640d;
+}
+#authformpane .added-extra {
+  background: #f7f7f7;
+  padding: 10px;
+  margin-top: 1.095em;
+}
+#authformpane .added-extra a {
+  font-size: 1.05em;
+  color: #82bd61;
+}
+#authformpane .added-extra a:hover {
+  color: #4d4d4d;
+}
+#pinBoot {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+}
