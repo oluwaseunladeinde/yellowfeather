@@ -1,0 +1,15 @@
+<footer class="footer">
+    <div class="row">
+        <div class="col-4of5 col-offset-1of10">
+            <span class="footer-title">Popular Locations</span>
+            <ul class="list-three-columns">
+                {% for location in locations %}
+                <li><a href="#">{{ location }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</footer>
+<footer class="sub-footer">
+    <p class="text-center">&copy; 2018. All rights reserved | AMOR DIGITAL STUDIOS</p>
+</footer>
