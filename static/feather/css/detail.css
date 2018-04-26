@@ -1,0 +1,93 @@
+/* FOR DEMO ONLY */
+/* Import Bootswatch paper theme because it isn't provided by Bootsnipp and it is awesome! */
+/* @import url(//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.4/paper/bootstrap.min.css); */
+
+/* WHAT YOU NEED */
+.spacer{margin-top: 1.5em;}
+.fading-side-menu.affix-top {
+    opacity: 1;
+    transition: opacity 1s
+}
+.fading-side-menu.affix {
+    top: 11.5px;
+}
+.fading-side-menu.affix {
+    opacity: 0.2;
+    transition: opacity 5s
+}
+.fading-side-menu.affix:hover {
+    opacity: 1;
+    transition: opacity 0.3s
+}
+/* RECOMMENDED STYLING BUT NOT REQUIRED */
+.fading-side-menu a {
+    color: rgb(102, 102, 102);
+}
+.fading-side-menu a .fa {
+    padding-right:15px;
+}
+
+.title {
+    font-weight: 700;
+    margin-top: 0px;
+}
+
+p.small.text-muted {
+    margin-bottom: 0px;
+}
+
+.lead {
+    font-style: italic;
+}
+
+.no-margin {
+    margin: 0px !important;
+}
+
+.vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#fullscreen {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.gallery-wrap .img-big-wrap {
+    background: #cecece;
+}
+.gallery-wrap .img-big-wrap img {
+    height: 450px;
+    width: auto;
+    display: inline-block;
+    cursor: zoom-in;
+}
+
+
+.gallery-wrap .img-small-wrap .item-gallery {
+    margin: 7px 2px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.gallery-wrap .img-small-wrap {
+    text-align: center;
+}
+.gallery-wrap .img-small-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.card-body-lg{
+    padding: 15px 10px 0 15px;
+}
+
+.card-body-lg .price-detail-wrap h3 num{
+    font-weight: 700;
+    font-size: 1.5em;
+}
