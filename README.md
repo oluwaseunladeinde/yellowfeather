@@ -8,7 +8,9 @@ A property listing web application with the following features
 Built using the **Django Framework**. Version 1.11.8. See the requirements.txt file for Python libraries to install.
 
 ## To-Do List
+- Add pagination
 - Add listings to deals
 - Add states/region for all countries
 - Add map of listings
+- Web scrapping of resources
 - And more...
